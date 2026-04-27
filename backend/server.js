@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 const moodRoutes = require("./routes/moodRoutes");
 app.use("/api/moods", moodRoutes);
-const Mood = require("./models/mood");
+const Mood = require("./models/Mood");
 app.get("/api/stats", async (req, res) => {
     try {
         const { userId, role } = req.query;
