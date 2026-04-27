@@ -71,8 +71,11 @@ export default function Dashboard({ user, onLogout }) {
   const fetchData = async () => {
     try {
       const [moodsRes, statsRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/moods?userId=${user.username}&role=${user.role}`),
-        axios.get(`http://localhost:5000/api/stats?userId=${user.username}&role=${user.role}`)
+        // axios.get(`http://localhost:5000/api/moods?userId=${user.username}&role=${user.role}`),
+        // axios.get(`http://localhost:5000/api/stats?userId=${user.username}&role=${user.role}`)
+        axios.get(`https://moodsnap-backend.onrender.com/api/moods?userId=${user.username}&role=${user.role}`),
+        axios.get(`https://moodsnap-backend.onrender.com/api/stats?userId=${user.username}&role=${user.role}`)
+
       ]);
       setMoods(moodsRes.data);
       setStats(statsRes.data);
