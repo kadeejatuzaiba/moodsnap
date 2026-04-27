@@ -1,62 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import MoodForm from './MoodForm';
-// import Timeline from './Timeline';
-// import Stats from './Stats';
-
-// export default function Dashboard({ user, onLogout }) {
-//   const [moods, setMoods] = useState([]);
-//   const [stats, setStats] = useState({});
-
-//   const fetchData = async () => {
-//     try {
-//       const [moodsRes, statsRes] = await Promise.all([
-//         axios.get(`http://localhost:5000/api/moods?userId=${user.username}&role=${user.role}`),
-//         axios.get(`http://localhost:5000/api/stats?userId=${user.username}&role=${user.role}`)
-//       ]);
-//       setMoods(moodsRes.data);
-//       setStats(statsRes.data);
-//     } catch (err) {
-//       console.error("Error fetching data", err);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchData();
-//   }, [user]);
-
-//   return (
-//     <div className="mx-auto max-w-6xl p-4 md:p-6 lg:p-8">
-//       <header className="mb-8 flex items-center justify-between rounded-2xl bg-white p-6 shadow-sm border border-slate-200">
-//         <h1 className="text-2xl font-bold text-indigo-600 tracking-tight">MoodSnap</h1>
-//         <div className="flex items-center gap-4">
-//           <span className="rounded-full bg-slate-100 px-4 py-1.5 text-sm font-semibold text-slate-600">
-//             {user.role.toUpperCase()} : <span className="text-indigo-600">{user.username}</span>
-//           </span>
-//           <button 
-//             className="rounded-lg border border-red-500 px-4 py-1.5 font-medium text-red-500 transition-colors hover:bg-red-500 hover:text-white" 
-//             onClick={onLogout}
-//           >
-//             Logout
-//           </button>
-//         </div>
-//       </header>
-
-//       <div className="grid gap-6 md:grid-cols-3">
-//         {user.role === 'user' && (
-//           <div className="md:col-span-1">
-//             <MoodForm user={user} onMoodAdded={fetchData} />
-//           </div>
-//         )}
-
-//         <div className={`flex flex-col gap-6 ${user.role === 'user' ? 'md:col-span-2' : 'md:col-span-3'}`}>
-//           <Stats stats={stats} user={user} />
-//           <Timeline moods={moods} user={user} onMoodDeleted={fetchData} />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -71,8 +12,6 @@ export default function Dashboard({ user, onLogout }) {
   const fetchData = async () => {
     try {
       const [moodsRes, statsRes] = await Promise.all([
-        // axios.get(`http://localhost:5000/api/moods?userId=${user.username}&role=${user.role}`),
-        // axios.get(`http://localhost:5000/api/stats?userId=${user.username}&role=${user.role}`)
         axios.get(`https://moodsnap-backend.onrender.com/api/moods?userId=${user.username}&role=${user.role}`),
         axios.get(`https://moodsnap-backend.onrender.com/api/stats?userId=${user.username}&role=${user.role}`)
 
