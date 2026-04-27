@@ -15,7 +15,7 @@ export default function MoodForm({ user, onMoodAdded }) {
   const handleSubmit = async () => {
     if (!selectedMood) return;
     try {
-      await axios.post('http://localhost:5000/api/moods', {
+      await axios.post('https://moodsnap-backend.onrender.com/api/moods', {
         userId: user.username,
         mood: selectedMood,
         note
@@ -31,13 +31,13 @@ export default function MoodForm({ user, onMoodAdded }) {
   return (
     <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
       <h3 className="mb-4 text-lg font-semibold text-slate-800">How are you feeling today?</h3>
-      
+
       <div className="mb-6 flex justify-center gap-4">
         {MOODS.map(m => {
           const isSelected = selectedMood === m.label;
           return (
-            <button 
-              key={m.label} 
+            <button
+              key={m.label}
               className={`flex h-16 w-16 items-center justify-center rounded-full text-4xl transition-all duration-200 ${m.color} ${isSelected ? m.active : 'bg-slate-50'}`}
               onClick={() => setSelectedMood(m.label)}
               title={m.label}
@@ -50,14 +50,14 @@ export default function MoodForm({ user, onMoodAdded }) {
 
       {selectedMood && (
         <div className="animate-fade-in-up">
-          <input 
-            type="text" 
-            placeholder="Add an optional note about why..." 
+          <input
+            type="text"
+            placeholder="Add an optional note about why..."
             value={note}
             onChange={e => setNote(e.target.value)}
             className="mb-4 w-full rounded-lg border border-slate-300 p-3 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
           />
-          <button 
+          <button
             onClick={handleSubmit}
             className="w-full rounded-lg bg-indigo-600 p-3 font-semibold text-white transition-colors hover:bg-indigo-700"
           >

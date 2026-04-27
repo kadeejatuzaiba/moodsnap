@@ -22,7 +22,7 @@ export default function Timeline({ moods, user, onMoodDeleted }) {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:5000/api/moods/${id}?role=${user.role}`);
+          await axios.delete(`https://moodsnap-backend.onrender.com/api/moods/${id}?role=${user.role}`);
           Swal.fire(
             'Deleted!',
             'The mood entry has been deleted.',
@@ -65,8 +65,8 @@ export default function Timeline({ moods, user, onMoodDeleted }) {
               </span>
             </div>
             {user.role === 'admin' && (
-              <button 
-                className="rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600" 
+              <button
+                className="rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600"
                 onClick={() => handleDelete(mood._id)}
               >
                 Delete

@@ -9,7 +9,10 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: "https://moodsnap-f7jcpgses-kadeejatuzaibas-projects.vercel.app",
+    origin: [
+        "https://moodsnap-f7jcpgses-kadeejatuzaibas-projects.vercel.app",
+        "https://moodsnap-hqmtp5ih4-kadeejatuzaibas-projects.vercel.app"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
