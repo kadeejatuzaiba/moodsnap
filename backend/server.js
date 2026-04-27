@@ -4,8 +4,15 @@ const cors = require("cors");
 require("dotenv").config();
 const app = express();
 
-app.use(cors());
+
 app.use(express.json());
+
+
+app.use(cors({
+    origin: "https://moodsnap-f7jcpgses-kadeejatuzaibas-projects.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 
 // connect DB
 mongoose.connect(process.env.MONGO_URI)
